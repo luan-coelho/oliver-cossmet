@@ -3,16 +3,19 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Verde vivo — usado em botões, ícones, destaques */
   --color-primary: #47b275;
-  --color-primary-dark: #2e9158;
-  --color-primary-mid: #5abf82;
-  --color-primary-light: #6dcc93;
+  /* Verde escuro — usado em fundos (hero, footer, mobile menu) */
+  --color-primary-dark: #1a3d2a;
+  --color-primary-mid: #39955f;
+  --color-primary-light: #5abf82;
   --color-primary-pale: #eaf7f0;
   --color-primary-muted: #b8e8cc;
 
-  --color-accent: #47b275;
-  --color-accent-light: #6dcc93;
-  --color-accent-dark: #2e9158;
+  /* Accent branco-gelo para CTAs sobre fundo verde escuro */
+  --color-accent: #ffffff;
+  --color-accent-light: #f0faf5;
+  --color-accent-dark: #e0f4ea;
 
   --color-surface: #f7faf8;
   --color-surface-2: #eef5f1;
