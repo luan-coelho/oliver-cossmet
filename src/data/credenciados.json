@@ -1,0 +1,23 @@
+[
+  { "id": "master-saude", "name": "Clínica Master Saúde", "city": "Manaus-AM" },
+  { "id": "labvida", "name": "Labvida Laboratório de Análises Clínicas", "city": "Palmas-TO" },
+  { "id": "lab-sao-joao", "name": "Laboratório São João", "city": "Sombrio-SC" },
+  { "id": "day-clinic", "name": "Day Clínic", "city": "Araguaína-TO" },
+  { "id": "multilife", "name": "Clínica Multilife", "city": "Brasília-DF" },
+  { "id": "hemolab", "name": "Laboratório Hemolab", "city": "Gurupi-TO" },
+  { "id": "goldenmed", "name": "Clínica GoldenMed", "city": "Itajaí-SC" },
+  { "id": "espaco-feminino", "name": "Clínica Espaço Feminino", "city": "Palmas-TO" },
+  { "id": "ivgo", "name": "Clínica IVGO", "city": "Goiânia-GO" },
+  { "id": "trampo", "name": "Clínica Trampo", "city": "Palmas-TO" },
+  { "id": "viver", "name": "Viver Clínica de Imagens Médicas", "city": "Brasília-DF" },
+  { "id": "santa-flora", "name": "Laboratório Santa Flora", "city": "Itajaí-SC" },
+  { "id": "medimagem", "name": "Medimagem Medicina Diagnóstica", "city": "Palmas-TO" },
+  { "id": "diagnostico", "name": "Diagnóstico Laboratório de Análises", "city": "Florianópolis-SC" },
+  { "id": "cet", "name": "Clínica CET", "city": "Araguaína-TO" },
+  { "id": "centro-ocular", "name": "Clínica Centro Ocular", "city": "Macapá-AP" },
+  { "id": "lab-nucleo", "name": "Laboratório Núcleo", "city": "Araguaína-TO" },
+  { "id": "burigo", "name": "Laboratório Búrigo", "city": "Criciúma-SC" },
+  { "id": "labclin", "name": "Laboratório Labclin", "city": "Boa Vista-RR" },
+  { "id": "medset", "name": "Clínica Medset", "city": "Araranguá-SC" },
+  { "id": "climestra", "name": "Clínica Climestra", "city": "Marabá-PA" }
+]

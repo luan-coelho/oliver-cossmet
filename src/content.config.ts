@@ -10,11 +10,10 @@ const services = defineCollection({
     description: z.string(),
     items: z.array(
       z.object({
-        id: z.string(),
         title: z.string(),
         details: z.string(),
         description: z.string(),
-      }),
+      })
     ),
   }),
 })
@@ -24,9 +23,7 @@ const clients = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
-    fullName: z.string(),
     city: z.string(),
-    state: z.string(),
   }),
 })
 
@@ -34,9 +31,8 @@ const trainings = defineCollection({
   loader: file('src/data/trainings.json'),
   schema: z.object({
     id: z.string(),
-    nr: z.string(),
     title: z.string(),
-    details: z.string(),
+    nr: z.string(),
     description: z.string(),
   }),
 })
@@ -53,12 +49,20 @@ const exams = defineCollection({
 const certificates = defineCollection({
   loader: file('src/data/certificates.json'),
   schema: z.object({
-    id: z.number(),
+    id: z.string(),
     title: z.string(),
     entity: z.string(),
     state: z.string(),
-    pdfUrl: z.string(),
   }),
 })
 
-export const collections = { services, clients, trainings, exams, certificates }
+const credenciados = defineCollection({
+  loader: file('src/data/credenciados.json'),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    city: z.string(),
+  }),
+})
+
+export const collections = { services, clients, trainings, exams, certificates, credenciados }

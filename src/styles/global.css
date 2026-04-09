@@ -1,70 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
-
 @import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/dm-sans';
 
 @theme {
-  /* Verde vivo — usado em botões, ícones, destaques */
-  --color-primary: #47b275;
-  /* Verde escuro — usado em fundos (hero, footer, mobile menu) */
-  --color-primary-dark: #1a3d2a;
-  --color-primary-mid: #39955f;
-  --color-primary-light: #5abf82;
-  --color-primary-pale: #eaf7f0;
-  --color-primary-muted: #b8e8cc;
+  --font-display: 'Bricolage Grotesque Variable', serif;
+  --font-body: 'DM Sans Variable', sans-serif;
 
-  /* Accent branco-gelo para CTAs sobre fundo verde escuro */
-  --color-accent: #ffffff;
-  --color-accent-light: #f0faf5;
-  --color-accent-dark: #e0f4ea;
+  --color-primary: #2EB86A;
+  --color-primary-dark: #27a960;
+  --color-primary-deep: #219a54;
+  --color-primary-light: #e8f8ef;
+  --color-primary-50: #f0fbf5;
+  --color-primary-100: #d4f3e1;
+  --color-primary-200: #a5e7c0;
+  --color-primary-300: #6dd99a;
+  --color-primary-400: #3cc878;
+  --color-primary-500: #2EB86A;
+  --color-primary-600: #25a35c;
+  --color-primary-700: #1a7a43;
+  --color-primary-800: #12562f;
+  --color-primary-900: #0a3a1f;
 
-  --color-surface: #f7faf8;
-  --color-surface-2: #eef5f1;
+  --color-accent: #e8a825;
+  --color-accent-dark: #c48d1a;
+  --color-accent-light: #fef5e0;
 
-  --color-ink: #1a2e22;
-  --color-ink-muted: #4a6454;
-  --color-ink-faint: #8aaa96;
+  --color-cream: #f7f8f7;
+  --color-cream-dark: #eef0ee;
 
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --color-surface: #fafbfa;
+  --color-surface-dark: #0f2318;
 
-  --radius-card: 12px;
-  --radius-btn: 8px;
+  --color-text: #1a1f1c;
+  --color-text-muted: #52605a;
+  --color-text-light: #8a948e;
+
+  --color-border: #dfe5e1;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    font-family: var(--font-body);
-    color: var(--color-ink);
-    background-color: #fff;
-  }
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
 
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-display);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 100;
+}
 
-  ::selection {
-    background-color: var(--color-primary-pale);
-    color: var(--color-primary-dark);
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+  mix-blend-mode: overlay;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  animation: fade-up 0.8s var(--ease-out-expo) forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+  }
+  .animate-on-scroll.is-visible {
+    animation: none;
+  }
+  .animate-pulse {
+    animation: none;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

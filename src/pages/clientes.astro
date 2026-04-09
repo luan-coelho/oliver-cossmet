@@ -2,73 +2,36 @@
 import MainLayout from '@/layouts/main-layout.astro'
 import PageHero from '@/components/shared/page-hero.astro'
 import { getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
 
 const clients = await getCollection('clients')
-
-const byState = clients.reduce(
-  (acc, c) => {
-    const key = c.data.state
-    if (!acc[key]) acc[key] = []
-    acc[key].push(c)
-    return acc
-  },
-  {} as Record<string, typeof clients>,
-)
-
-const states = Object.keys(byState).sort()
 ---
 
-<MainLayout title="Clientes" description="Empresas e órgãos públicos atendidos pela Oliver Cossmet em todo o Brasil.">
-  <PageHero
-    title="Nossos Clientes"
-    subtitle="Atendemos empresas e órgãos públicos em mais de 10 estados brasileiros."
-    breadcrumb={[{ label: 'Clientes' }]}
-  />
+<MainLayout title="Clientes" description="Conheça as empresas e instituições que confiam na Oliver Cossmet.">
+  <PageHero title="Nossos Clientes" breadcrumb={[{ label: 'Clientes', href: '/clientes' }]} />
 
-  <section class="bg-white py-20 lg:py-28">
-    <div class="mx-auto max-w-7xl px-6 lg:px-10">
-      <div class="mb-12 grid grid-cols-3 gap-6 sm:grid-cols-3 lg:grid-cols-3 lg:max-w-md">
-        {[
-          { value: '100+', label: 'clientes atendidos' },
-          { value: '10+', label: 'estados cobertos' },
-          { value: '13+', label: 'anos de mercado' },
-        ].map((s) => (
-          <div class="text-center">
-            <div class="font-display text-3xl text-primary-dark">{s.value}</div>
-            <div class="mt-1 text-xs text-ink-faint">{s.label}</div>
+  <section class="py-28 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="mx-auto mb-16 max-w-lg text-center text-[1.05rem] text-text-muted animate-on-scroll">
+        Atendemos mais de 100 clientes em mais de 10 estados, incluindo órgãos públicos federais, estaduais e empresas privadas.
+      </p>
+
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {clients.map((client, i) => (
+          <div class:list={['animate-on-scroll flex items-center gap-4 rounded-2xl border border-border/60 bg-white p-5 transition-all duration-300 hover:shadow-md hover:border-primary/15', `stagger-${(i % 6) + 1}`]}>
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-[11px] font-bold tracking-wide text-white font-display">
+              {client.data.name.substring(0, 2).toUpperCase()}
+            </div>
+            <div class="min-w-0">
+              <div class="truncate text-[0.875rem] font-semibold text-text">{client.data.name}</div>
+              <div class="flex items-center gap-1 text-[12px] text-text-light">
+                <Icon name="lucide:map-pin" class="h-3 w-3" />
+                {client.data.city}
+              </div>
+            </div>
           </div>
         ))}
       </div>
-
-      {
-        states.map((state) => (
-          <div class="mb-12">
-            <h2 class="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              <span class="inline-flex h-6 items-center rounded-md bg-primary-pale px-2.5 font-bold text-primary">
-                {state}
-              </span>
-              {byState[state][0].data.city !== 'Nacional' ? byState[state][0].data.city : 'Nacional'}
-            </h2>
-            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {
-                byState[state].map((c) => (
-                  <div class="flex items-center gap-4 rounded-xl border border-surface-2 bg-surface p-4">
-                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-pale font-display text-sm font-bold text-primary">
-                      {c.data.name.slice(0, 2).toUpperCase()}
-                    </div>
-                    <div>
-                      <div class="text-sm font-semibold text-ink">{c.data.fullName}</div>
-                      <div class="text-xs text-ink-faint">
-                        {c.data.city} — {c.data.state}
-                      </div>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        ))
-      }
     </div>
   </section>
 </MainLayout>

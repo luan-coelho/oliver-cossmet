@@ -1,66 +1,113 @@
 ---
-import clientsData from '@/data/clients.json'
+import { getCollection } from 'astro:content'
 
-const clients = clientsData
+const allClients = await getCollection('clients')
+const half = Math.ceil(allClients.length / 2)
+const row1 = allClients.slice(0, half)
+const row2 = allClients.slice(half)
 ---
 
-<section class="overflow-hidden border-y border-surface-2 bg-white py-16">
-  <div class="mx-auto mb-10 max-w-7xl px-6 text-center lg:px-10">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-      Empresas e órgãos que confiam em nós
-    </p>
+<section class="relative overflow-hidden bg-white py-28" aria-label="Nossos Clientes">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 flex flex-col items-center gap-4 text-center animate-on-scroll">
+      <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-text-light">
+        Quem Confia
+      </span>
+      <h2 class="text-3xl font-extrabold tracking-tight text-text font-display text-balance sm:text-4xl">
+        Nossos Clientes
+      </h2>
+      <p class="max-w-lg text-text-muted">
+        Instituições públicas e privadas em mais de 10&nbsp;estados
+      </p>
+    </div>
   </div>
 
-  <div class="marquee-wrapper relative">
-    <div class="marquee-track flex gap-6">
-      {
-        [...clients, ...clients].map((client, i) => (
-          <div class="marquee-item flex shrink-0 items-center gap-3 rounded-xl border border-surface-2 bg-surface px-6 py-4">
-            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-pale text-primary font-display text-xs font-bold">
-              {client.name.slice(0, 2).toUpperCase()}
+  <div class="space-y-3" role="marquee" aria-label="Lista de clientes em movimento">
+    <div class="marquee">
+      <div class="marquee-track">
+        {[...row1, ...row1].map((client) => (
+          <div class="flex shrink-0 items-center gap-3 rounded-2xl border border-border/50 bg-white px-5 py-3.5">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-[11px] font-bold tracking-wide text-white font-display" aria-hidden="true">
+              {client.data.name.substring(0, 2).toUpperCase()}
             </div>
-            <div class="text-left">
-              <div class="text-sm font-semibold text-ink">{client.name}</div>
-              <div class="text-xs text-ink-faint">{client.city} — {client.state}</div>
+            <div class="min-w-0">
+              <div class="text-[13px] font-semibold text-text whitespace-nowrap truncate">{client.data.name}</div>
+              <div class="text-[11px] text-text-light">{client.data.city}</div>
             </div>
           </div>
-        ))
-      }
+        ))}
+      </div>
     </div>
+
+    <div class="marquee marquee-reverse">
+      <div class="marquee-track">
+        {[...row2, ...row2].map((client) => (
+          <div class="flex shrink-0 items-center gap-3 rounded-2xl border border-border/50 bg-white px-5 py-3.5">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent-light text-[11px] font-bold tracking-wide text-accent-dark font-display" aria-hidden="true">
+              {client.data.name.substring(0, 2).toUpperCase()}
+            </div>
+            <div class="min-w-0">
+              <div class="text-[13px] font-semibold text-text whitespace-nowrap truncate">{client.data.name}</div>
+              <div class="text-[11px] text-text-light">{client.data.city}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="sr-only" aria-live="polite">
+    <ul>
+      {allClients.map((client) => (
+        <li>{client.data.name} — {client.data.city}</li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="mt-10 text-center">
+    <a href="/clientes" class="group inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-[13px] font-semibold text-text transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 hover:border-primary hover:bg-primary hover:text-white">
+      Ver todos os clientes
+      <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
   </div>
 </section>
 
 <style>
-  .marquee-wrapper {
-    --duration: 50s;
-  }
-  .marquee-wrapper::before,
-  .marquee-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 120px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .marquee-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, white, transparent);
-  }
-  .marquee-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, white, transparent);
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
   .marquee-track {
-    animation: marquee var(--duration) linear infinite;
-    width: max-content;
+    display: flex;
+    gap: 0.75rem;
+    animation: marquee-scroll 50s linear infinite;
   }
-  .marquee-wrapper:hover .marquee-track {
-    animation-play-state: paused;
+  .marquee-reverse .marquee-track {
+    animation-direction: reverse;
+    animation-duration: 55s;
   }
-  @keyframes marquee {
+  @keyframes marquee-scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+    .marquee {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
   }
 </style>

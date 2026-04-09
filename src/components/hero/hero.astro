@@ -1,87 +1,138 @@
 ---
-import { CONTACT_INFO } from '@/consts'
+import { Icon } from 'astro-icon/components'
+import { CONTACT } from '@/consts'
 
-const whatsappMsg = encodeURIComponent('Olá! Gostaria de mais informações sobre os serviços da Oliver Cossmet.')
-const whatsappHref = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${whatsappMsg}`
+const whatsappUrl = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent('Olá! Gostaria de mais informações sobre os serviços da Oliver Cossmet.')}`
 ---
 
-<section class="hero relative flex min-h-screen items-center overflow-hidden">
-  <div class="hero-bg absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-primary-dark"></div>
-    <div
-      class="absolute inset-0 opacity-30"
-      style="background: radial-gradient(ellipse at 75% 50%, #39955f 0%, transparent 50%), radial-gradient(ellipse at 15% 85%, #2e7a4f 0%, transparent 40%)"
-    ></div>
-    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cdefs%3E%3Cpattern id='g' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='50' cy='50' r='1' fill='white'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3C/svg%3E\")"></div>
+<section class="relative overflow-hidden bg-white">
+  <div class="absolute inset-0" aria-hidden="true">
+    <div class="absolute top-0 right-0 h-[70%] w-[45%] bg-gradient-to-bl from-primary-50 via-primary-100/50 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 h-[40%] w-[30%] bg-gradient-to-tr from-primary-50 to-transparent"></div>
   </div>
 
-  <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 pb-20 lg:px-10 lg:pt-32">
-    <div class="grid items-center gap-16 lg:grid-cols-2">
+  <div class="absolute inset-0 opacity-[0.025]" aria-hidden="true">
+    <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="crosses" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M40 28v24M28 40h24" stroke="currentColor" stroke-width="1" fill="none" class="text-primary"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#crosses)"/>
+    </svg>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-28">
       <div>
-        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
-          <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-          <span class="text-xs font-medium tracking-wide text-white/70">Desde 2012 — Palmas, Tocantins</span>
+        <div class="mb-8 inline-flex w-fit items-center gap-2.5 rounded-full border border-primary/15 bg-primary-50 px-5 py-2.5 text-[13px] tracking-wide text-primary"
+             style="animation: fade-up 0.6s var(--ease-out-expo) 0.1s both">
+          <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+          Desde 2012 — Palmas, Tocantins
         </div>
 
-        <h1 class="font-display text-5xl leading-[1.08] text-white md:text-6xl lg:text-[4.25rem]">
-          Saúde e<br />
-          <em class="not-italic text-accent">Segurança</em><br />
-          Ocupacional
+        <h1 class="text-[clamp(2.5rem,5vw,4.5rem)] leading-[1] font-extrabold tracking-[-0.03em] text-text text-balance"
+            style="animation: fade-up 0.8s var(--ease-out-expo) 0.2s both">
+          Cuidando da<br/>
+          <span class="text-primary">saúde e segurança</span><br/>
+          ocupacional
         </h1>
 
-        <p class="mt-6 max-w-md text-base leading-relaxed text-white/60">
-          Consultoria especializada em gestão de saúde e segurança do trabalho. Atendemos em todo o território nacional com programas NR, avaliações periódicas e laudos técnicos.
+        <p class="mt-8 max-w-lg text-[1.05rem] leading-[1.7] text-text-muted"
+           style="animation: fade-up 0.8s var(--ease-out-expo) 0.35s both">
+          Consultoria completa em saúde, segurança e medicina do trabalho — da elaboração dos programas das NRs à gestão integrada de riscos em todo o Brasil.
         </p>
 
-        <div class="mt-10 flex flex-wrap gap-4">
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+             style="animation: fade-up 0.8s var(--ease-out-expo) 0.5s both">
           <a
-            href={whatsappHref}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-2.5 rounded-xl bg-primary px-7 py-4 font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-xl"
+            class="group inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-8 py-4 text-[15px] font-semibold text-white shadow-[0_8px_32px] shadow-primary/25 transition-[transform,box-shadow] duration-300 hover:shadow-primary/40 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            <svg class="h-5 w-5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
-            Falar no WhatsApp
+            Fale Conosco
           </a>
           <a
             href="/servicos"
-            class="flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10"
+            class="group inline-flex items-center justify-center gap-2 rounded-2xl border border-border px-8 py-4 text-[15px] font-medium text-text-muted transition-[border-color,color] duration-300 hover:border-primary hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            Nossos serviços
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            Nossos Serviços
+            <Icon name="lucide:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
           </a>
         </div>
       </div>
 
-      <div class="hidden lg:block">
-        <div class="grid grid-cols-2 gap-4">
-          {[
-            { icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', label: 'Programas NR', value: '20+', desc: 'normas atendidas' },
-            { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label: 'Clientes Ativos', value: '100+', desc: 'empresas atendidas' },
-            { icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7', label: 'Cobertura Nacional', value: '10+', desc: 'estados atendidos' },
-            { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', label: 'Anos de Experiência', value: '13+', desc: 'anos no mercado' },
-          ].map((stat) => (
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary mb-3">
-                <path d={stat.icon}/>
-              </svg>
-              <div class="font-display text-3xl text-white">{stat.value}</div>
-              <div class="mt-0.5 text-xs text-white/50">{stat.desc}</div>
-              <div class="mt-1 text-sm font-medium text-white/80">{stat.label}</div>
+      <div class="hidden lg:block" style="animation: fade-up 1s var(--ease-out-expo) 0.4s both" aria-hidden="true">
+        <div class="relative">
+          <div class="absolute -top-8 -left-8 h-full w-full rounded-3xl bg-primary/5"></div>
+
+          <div class="relative grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+              <div class="rounded-2xl bg-primary p-6 text-white shadow-lg shadow-primary/20">
+                <Icon name="lucide:shield-check" class="mb-3 h-8 w-8" />
+                <div class="text-[15px] font-bold font-display">Segurança do Trabalho</div>
+                <div class="mt-1 text-[13px] text-white/90">NRs e eSOCIAL</div>
+              </div>
+
+              <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+                <Icon name="lucide:leaf" class="mb-3 h-8 w-8 text-primary" />
+                <div class="text-[15px] font-bold text-text font-display">Meio Ambiente</div>
+                <div class="mt-1 text-[13px] text-text-muted">PGRS, PGRSS, PEA</div>
+              </div>
+
+              <div class="rounded-2xl bg-primary-50 p-6">
+                <div class="text-3xl font-extrabold text-primary font-display">100+</div>
+                <div class="mt-1 text-[13px] text-text-muted">Clientes em todo o Brasil</div>
+              </div>
             </div>
-          ))}
+
+            <div class="mt-12 space-y-4">
+              <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+                <Icon name="lucide:flask-conical" class="mb-3 h-8 w-8 text-primary" />
+                <div class="text-[15px] font-bold text-text font-display">Higiene Ocupacional</div>
+                <div class="mt-1 text-[13px] text-text-muted">Riscos físicos, químicos e biológicos</div>
+              </div>
+
+              <div class="rounded-2xl bg-primary p-6 text-white shadow-lg shadow-primary/20">
+                <Icon name="lucide:stethoscope" class="mb-3 h-8 w-8" />
+                <div class="text-[15px] font-bold font-display">Avaliação Periódica</div>
+                <div class="mt-1 text-[13px] text-white/90">Via SIAPENET</div>
+              </div>
+
+              <div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+                <Icon name="lucide:graduation-cap" class="mb-3 h-8 w-8 text-primary" />
+                <div class="text-[15px] font-bold text-text font-display">17 Treinamentos</div>
+                <div class="mt-1 text-[13px] text-text-muted">NR 01 ao NR 25</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-40">
-      <path d="M19 9l-7 7-7-7"/>
-    </svg>
+<section class="relative bg-primary">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 gap-4 py-12 sm:py-14 md:grid-cols-4 md:gap-8">
+      {[
+        { value: '14+', label: 'Anos de experiência', icon: 'lucide:calendar-check' },
+        { value: '100+', label: 'Clientes atendidos', icon: 'lucide:building-2' },
+        { value: '10+', label: 'Estados de atuação', icon: 'lucide:map' },
+        { value: '50+', label: 'Credenciados parceiros', icon: 'lucide:handshake' },
+      ].map((stat) => (
+        <div class="flex flex-col items-center text-center">
+          <Icon name={stat.icon} class="mb-3 h-6 w-6 text-white/80" aria-hidden="true" />
+          <div class="text-3xl font-extrabold tracking-tight text-white font-display sm:text-4xl">
+            {stat.value}
+          </div>
+          <div class="mt-1 text-[13px] text-white/90">{stat.label}</div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
