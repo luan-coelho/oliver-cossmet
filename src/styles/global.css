@@ -3,23 +3,23 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #1a4731;
-  --color-primary-dark: #0f2e1f;
-  --color-primary-mid: #245e3e;
-  --color-primary-light: #2d8c5a;
-  --color-primary-pale: #e8f5ee;
-  --color-primary-muted: #c5dfd0;
+  --color-primary: #47b275;
+  --color-primary-dark: #2e9158;
+  --color-primary-mid: #5abf82;
+  --color-primary-light: #6dcc93;
+  --color-primary-pale: #eaf7f0;
+  --color-primary-muted: #b8e8cc;
 
-  --color-accent: #c8a96e;
-  --color-accent-light: #e8d4a8;
-  --color-accent-dark: #a07840;
+  --color-accent: #47b275;
+  --color-accent-light: #6dcc93;
+  --color-accent-dark: #2e9158;
 
-  --color-surface: #f9faf8;
-  --color-surface-2: #f2f5f0;
+  --color-surface: #f7faf8;
+  --color-surface-2: #eef5f1;
 
-  --color-ink: #111a14;
-  --color-ink-muted: #4a5e52;
-  --color-ink-faint: #8fa899;
+  --color-ink: #1a2e22;
+  --color-ink-muted: #4a6454;
+  --color-ink-faint: #8aaa96;
 
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
