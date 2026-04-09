@@ -1,0 +1,120 @@
+[
+  {
+    "id": "seguranca-do-trabalho",
+    "title": "Segurança do Trabalho",
+    "icon": "shield-check",
+    "description": "Gestão de Medicina e Segurança desenvolvida para atender às exigências das Normas Regulamentadoras do Ministério do Trabalho e do eSOCIAL.",
+    "items": [
+      {
+        "id": "ppra",
+        "title": "PPRA — Programa de Prevenção de Riscos Ambientais",
+        "details": "Regulamentado pela NR 09 da Portaria 3214/78.",
+        "description": "O PPRA tem por objetivo avaliar, definir e controlar os riscos ambientais originados nos ambientes de trabalho. A Oliver Cossmet atua desde 2012, atendendo em mais de 10 estados da federação brasileira e Distrito Federal."
+      },
+      {
+        "id": "pcmso",
+        "title": "PCMSO — Programa de Controle Médico de Saúde Ocupacional",
+        "details": "Regulamentado pela NR-7 da Portaria 3.214/78.",
+        "description": "O PCMSO é o controle médico da parte integrante do conjunto de iniciativas das empresas no campo da saúde dos trabalhadores, sendo articulado com o disposto nas demais normas regulamentadoras."
+      },
+      {
+        "id": "ltcat",
+        "title": "LTCAT — Laudo Técnico das Condições Ambientais de Trabalho",
+        "details": "Documento que caracteriza os reflexos da Insalubridade e do INSS.",
+        "description": "O LTCAT tem como objetivo o reconhecimento, avaliação e controle dos riscos ambientais e deverá ser atualizado sempre que houver modificação no processo de trabalho."
+      },
+      {
+        "id": "ppp",
+        "title": "PPP — Perfil Profissiográfico Previdenciário",
+        "details": "Documento obrigatório para o INSS com histórico de exposição a riscos.",
+        "description": "O PPP é um documento que tem como objetivo relatar um conjunto de informações, tais como os agentes nocivos físicos, químicos e biológicos, em que os empregados estão expostos."
+      },
+      {
+        "id": "pcmat",
+        "title": "PCMAT — Condições e Meio Ambiente na Construção",
+        "details": "Documento elaborado para preservar a saúde e integridade física dos trabalhadores na indústria.",
+        "description": "O PCMAT previne doenças e acidentes e evita transtornos administrativos e financeiros à empresa na área da construção civil e indústria."
+      },
+      {
+        "id": "ergonomia",
+        "title": "Análise Ergonômica do Trabalho",
+        "details": "Exigência da Norma Regulamentadora 17.",
+        "description": "Traz benefícios como redução do risco ergonômico, diminuição da taxa de absenteísmo, mais segurança na execução das tarefas e aumento da produtividade."
+      },
+      {
+        "id": "laudo-periculosidade",
+        "title": "LP — Laudo de Periculosidade",
+        "details": "Exigência da Norma Regulamentadora 16.",
+        "description": "Tem a finalidade de definir os agentes periculosos existentes nos ambientes de trabalho, mapeando os locais onde esses agentes estão presentes."
+      }
+    ]
+  },
+  {
+    "id": "higiene-ocupacional",
+    "title": "Higiene Ocupacional",
+    "icon": "flask-conical",
+    "description": "Visa à proteção da integridade física e mental do trabalhador, preservando-o dos riscos de saúde inerentes às tarefas e ao ambiente físico de trabalho.",
+    "items": [
+      {
+        "id": "gestao-higiene",
+        "title": "Gestão de Higiene Ocupacional",
+        "details": "Prevenir, reconhecer, avaliar e controlar os riscos ocupacionais.",
+        "description": "Riscos ocupacionais são danos em potencial à saúde e integridade do colaborador, classificados em: físicos, químicos e biológicos."
+      }
+    ]
+  },
+  {
+    "id": "meio-ambiente",
+    "title": "Meio Ambiente",
+    "icon": "leaf",
+    "description": "Analisa e identifica as ações de contingência no cenário ambiental, através de equipe multidisciplinar e uso de avançadas tecnologias.",
+    "items": [
+      {
+        "id": "pgrs",
+        "title": "PGRS — Plano de Gerenciamento de Resíduos Sólidos",
+        "details": "",
+        "description": "Os documentos PGRS, PGRSS e PEA visam estabelecer um gerenciamento quanto às ações dos riscos encontrados no ambiente de trabalho e o cumprimento da legislação ambiental e correlata."
+      },
+      {
+        "id": "pgrss",
+        "title": "PGRSS — Plano de Gerenciamento de Resíduos de Saúde",
+        "details": "",
+        "description": "Os documentos PGRS, PGRSS e PEA visam estabelecer um gerenciamento quanto às ações dos riscos encontrados no ambiente de trabalho e o cumprimento da legislação ambiental e correlata."
+      },
+      {
+        "id": "pea",
+        "title": "PEA — Plano de Emergência Ambiental",
+        "details": "",
+        "description": "Os documentos PGRS, PGRSS e PEA visam estabelecer um gerenciamento quanto às ações dos riscos encontrados no ambiente de trabalho e o cumprimento da legislação ambiental e correlata."
+      }
+    ]
+  },
+  {
+    "id": "avaliacao-periodica",
+    "title": "Avaliação Periódica",
+    "icon": "stethoscope",
+    "description": "Realizamos avaliações periódicas em todo o território nacional com equipe multidisciplinar. A avaliação é feita pelo sistema SIAPENET do Governo Federal.",
+    "items": [
+      {
+        "id": "exames-periodicos",
+        "title": "Exames Periódicos — Laboratoriais, Oftalmológico, Mamografia e ASO",
+        "details": "",
+        "description": "O exame médico periódico é uma ação preventiva que busca preservar a saúde e qualidade de vida do servidor por meio de avaliação clínica e exames laboratoriais e complementares."
+      }
+    ]
+  },
+  {
+    "id": "esocial",
+    "title": "eSOCIAL",
+    "icon": "users",
+    "description": "Trabalhamos com a integração e monitoramento do eSOCIAL, sistema de controle e fiscalização das informações sociais do Governo Federal.",
+    "items": []
+  },
+  {
+    "id": "gestao-saude",
+    "title": "Gestão de Saúde",
+    "icon": "heart-pulse",
+    "description": "Com foco na prestação de serviços em Gestão Integrada de Riscos para a saúde, realizando serviços para órgãos públicos e empresas privadas.",
+    "items": []
+  }
+]

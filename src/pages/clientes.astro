@@ -1,0 +1,74 @@
+---
+import MainLayout from '@/layouts/main-layout.astro'
+import PageHero from '@/components/shared/page-hero.astro'
+import { getCollection } from 'astro:content'
+
+const clients = await getCollection('clients')
+
+const byState = clients.reduce(
+  (acc, c) => {
+    const key = c.data.state
+    if (!acc[key]) acc[key] = []
+    acc[key].push(c)
+    return acc
+  },
+  {} as Record<string, typeof clients>,
+)
+
+const states = Object.keys(byState).sort()
+---
+
+<MainLayout title="Clientes" description="Empresas e órgãos públicos atendidos pela Oliver Cossmet em todo o Brasil.">
+  <PageHero
+    title="Nossos Clientes"
+    subtitle="Atendemos empresas e órgãos públicos em mais de 10 estados brasileiros."
+    breadcrumb={[{ label: 'Clientes' }]}
+  />
+
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="mb-12 grid grid-cols-3 gap-6 sm:grid-cols-3 lg:grid-cols-3 lg:max-w-md">
+        {[
+          { value: '100+', label: 'clientes atendidos' },
+          { value: '10+', label: 'estados cobertos' },
+          { value: '13+', label: 'anos de mercado' },
+        ].map((s) => (
+          <div class="text-center">
+            <div class="font-display text-3xl text-primary-dark">{s.value}</div>
+            <div class="mt-1 text-xs text-ink-faint">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {
+        states.map((state) => (
+          <div class="mb-12">
+            <h2 class="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
+              <span class="inline-flex h-6 items-center rounded-md bg-primary-pale px-2.5 font-bold text-primary">
+                {state}
+              </span>
+              {byState[state][0].data.city !== 'Nacional' ? byState[state][0].data.city : 'Nacional'}
+            </h2>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {
+                byState[state].map((c) => (
+                  <div class="flex items-center gap-4 rounded-xl border border-surface-2 bg-surface p-4">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-pale font-display text-sm font-bold text-primary">
+                      {c.data.name.slice(0, 2).toUpperCase()}
+                    </div>
+                    <div>
+                      <div class="text-sm font-semibold text-ink">{c.data.fullName}</div>
+                      <div class="text-xs text-ink-faint">
+                        {c.data.city} — {c.data.state}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

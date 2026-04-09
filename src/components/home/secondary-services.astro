@@ -1,0 +1,68 @@
+---
+const services = [
+  {
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+    title: 'Avaliação Periódica',
+    desc: 'Realizamos avaliações periódicas em todo o território nacional com equipe multidisciplinar e credenciados. Avaliação feita pelo sistema SIAPENET do Governo Federal.',
+    href: '/servicos#avaliacao-periodica',
+  },
+  {
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+    title: 'eSOCIAL',
+    desc: 'Trabalhamos com a integração e monitoramento do eSOCIAL, sistema de controle do Governo Federal que unifica informações de saúde e segurança ocupacional de cada colaborador.',
+    href: '/servicos#esocial',
+  },
+  {
+    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+    title: 'Gestão de Saúde',
+    desc: 'Foco na prestação de serviços em Gestão Integrada de Riscos para a saúde, realizando serviços para órgãos públicos e empresas privadas com consultoria e assessoria de qualidade.',
+    href: '/servicos#gestao-saude',
+  },
+  {
+    icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+    title: 'Credenciados',
+    desc: 'Trabalhamos com uma rede de clínicas e laboratórios credenciados da mais alta qualidade para atender as demandas da gestão pública e privada em todo o Brasil.',
+    href: '/credenciados',
+  },
+]
+---
+
+<section class="bg-white py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="mb-14 text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">
+        Soluções completas
+      </p>
+      <h2 class="font-display text-3xl text-primary-dark md:text-4xl">
+        Como podemos ajudar
+      </h2>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        services.map((s) => (
+          <a
+            href={s.href}
+            class="group flex gap-5 rounded-2xl border border-surface-2 bg-surface p-7 transition-all duration-200 hover:border-primary-muted hover:shadow-md"
+          >
+            <div class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-pale text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d={s.icon} />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display mb-2 text-lg text-primary-dark">{s.title}</h3>
+              <p class="text-sm leading-relaxed text-ink-muted">{s.desc}</p>
+              <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary-light transition-colors group-hover:text-primary">
+                Saiba mais
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

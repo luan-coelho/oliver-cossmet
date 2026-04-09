@@ -1,0 +1,84 @@
+---
+import MainLayout from '@/layouts/main-layout.astro'
+import PageHero from '@/components/shared/page-hero.astro'
+
+const valores = [
+  { title: 'Excelência', desc: 'Qualidade em nossos serviços e atendimento.' },
+  { title: 'Compromisso', desc: 'Com o cliente, o colaborador, os parceiros e amigos.' },
+  { title: 'Transparência', desc: 'Trabalhamos com integridade, justiça, honestidade e retidão nas relações humanas.' },
+  { title: 'Sentimento de Dono', desc: 'Somos uma equipe apaixonada pelo que fazemos, trabalhando sempre com espírito empreendedor.' },
+]
+---
+
+<MainLayout title="Institucional" description="Conheça a história, missão, visão e valores da Oliver Cossmet.">
+  <PageHero
+    title="Institucional"
+    subtitle="Conheça nossa história e os valores que guiam cada projeto."
+    breadcrumb={[{ label: 'Institucional' }]}
+  />
+
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">Nossa história</p>
+          <h2 class="font-display mb-6 text-3xl text-primary-dark md:text-4xl">
+            Uma empresa construída com dedicação
+          </h2>
+          <div class="space-y-4 text-base leading-relaxed text-ink-muted">
+            <p>
+              A Oliver Cossmet é uma empresa de gestão de saúde e segurança ocupacional que vem, por meio de sua transparência, dar prioridade na qualidade de vida de seus clientes, colaboradores, parceiros e amigos.
+            </p>
+            <p>
+              A Oliver Cossmet é um sonho que se tornou realidade através do esforço e dedicação do jovem Paulo Sergio Souza Oliveira. Vindo de família humilde, aprendeu a dar valor a todos os conhecimentos adquiridos — familiar, religioso e como trabalhador empregado.
+            </p>
+            <p>
+              Iniciou seus primeiros passos profissionais em casa, depois trabalhando de ajudante de pedreiro, mensageiro e vendedor. Através de seus estudos, foi aprovado no Instituto Federal do Tocantins (IFTO) — Palmas — TO, no curso de Técnico em Segurança do Trabalho.
+            </p>
+            <p>
+              Após a formação, decidiu iniciar seus trabalhos na área de gestão de saúde e segurança ocupacional em 2012. Hoje a Oliver Cossmet oferece consultoria em gestão de saúde e segurança, prestando serviços desde a elaboração e coordenação dos programas previstos nas Normas Regulamentadoras.
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl bg-primary-dark p-8 text-white">
+            <div class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Visão</div>
+            <p class="font-display text-xl leading-snug">
+              Vislumbramos ser referência nacional como empresa líder em seu segmento na realização da prestação de serviços.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-primary-muted bg-primary-pale p-8">
+            <div class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">Missão</div>
+            <p class="text-base leading-relaxed text-ink-muted">
+              Atender as necessidades e interesses dos nossos clientes, colaboradores, parceiros e amigos. Encontrar soluções que levem as empresas à melhoria do desempenho em gestão de saúde e segurança ocupacional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="mb-12 text-center">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">O que nos guia</p>
+        <h2 class="font-display text-3xl text-primary-dark">Nossos Valores</h2>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          valores.map((v, i) => (
+            <div class="rounded-2xl bg-white p-7 shadow-sm ring-1 ring-surface-2">
+              <div class="font-display mb-3 text-4xl text-primary-pale">
+                0{i + 1}
+              </div>
+              <h3 class="font-display mb-2 text-lg text-primary-dark">{v.title}</h3>
+              <p class="text-sm leading-relaxed text-ink-muted">{v.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</MainLayout>

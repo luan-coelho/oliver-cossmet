@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string
+  subtitle?: string
+  breadcrumb?: { label: string; href?: string }[]
+}
+
+const { title, subtitle, breadcrumb } = Astro.props
+---
+
+<section class="relative overflow-hidden bg-primary-dark pt-32 pb-16 md:pb-20">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-20"
+    style="background-image: radial-gradient(circle at 70% 50%, #2d8c5a 0%, transparent 60%), radial-gradient(circle at 20% 80%, #c8a96e 0%, transparent 50%)"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
+    {
+      breadcrumb && (
+        <nav class="mb-6 flex items-center gap-2 text-xs text-white/40">
+          <a href="/" class="transition-colors hover:text-white/70">
+            Início
+          </a>
+          {breadcrumb.map((crumb) => (
+            <>
+              <span>/</span>
+              {crumb.href ? (
+                <a href={crumb.href} class="transition-colors hover:text-white/70">
+                  {crumb.label}
+                </a>
+              ) : (
+                <span class="text-white/70">{crumb.label}</span>
+              )}
+            </>
+          ))}
+        </nav>
+      )
+    }
+    <h1 class="font-display text-4xl text-white md:text-5xl lg:text-[3.25rem]">{title}</h1>
+    {subtitle && <p class="mt-4 max-w-lg text-base text-white/60 leading-relaxed">{subtitle}</p>}
+  </div>
+</section>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://olivercossmet.com.br/sitemap-index.xml

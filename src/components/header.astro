@@ -1,0 +1,203 @@
+---
+import { NAV_LINKS } from '@/consts'
+
+const pathname = Astro.url.pathname
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 right-0 left-0 z-50 transition-all duration-300 ease-in-out"
+>
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="flex h-18 items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group" aria-label="Oliver Cossmet">
+        <div
+          id="logo-mark"
+          class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-current transition-colors duration-300"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span
+            id="logo-text"
+            class="font-display text-lg font-normal tracking-tight transition-colors duration-300"
+          >
+            Oliver Cossmet
+          </span>
+          <span
+            id="logo-sub"
+            class="text-[10px] font-medium uppercase tracking-[0.15em] transition-colors duration-300 opacity-70"
+          >
+            Saúde & Segurança Ocupacional
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-8 lg:flex">
+        {
+          NAV_LINKS.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'nav-link text-sm font-medium tracking-wide transition-all duration-200',
+                pathname === link.href || pathname.startsWith(link.href + '/')
+                  ? 'nav-link--active'
+                  : '',
+              ]}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          href="/contato"
+          class="btn-cta ml-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-all duration-200"
+        >
+          Falar com a equipe
+        </a>
+      </nav>
+
+      <button
+        id="mobile-toggle"
+        class="nav-link flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span class="hamburger-bar block h-0.5 w-6 rounded-full bg-current transition-all duration-300"></span>
+        <span class="hamburger-bar block h-0.5 w-6 rounded-full bg-current transition-all duration-300"></span>
+        <span class="hamburger-bar block h-0.5 w-4 rounded-full bg-current self-end transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 translate-x-full bg-primary-dark transition-transform duration-300 ease-in-out lg:hidden"
+  aria-hidden="true"
+>
+  <div class="flex h-full flex-col px-8 pt-24 pb-12">
+    <nav class="flex flex-col gap-2">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="border-b border-white/10 py-4 font-display text-2xl text-white/90 transition-colors hover:text-white"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="mt-auto">
+      <a
+        href="/contato"
+        class="block rounded-xl bg-accent px-6 py-4 text-center font-semibold text-primary-dark transition-opacity hover:opacity-90"
+      >
+        Falar com a equipe
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  header.is-solid {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e8f5ee;
+    box-shadow: 0 1px 20px rgba(26, 71, 49, 0.06);
+  }
+
+  header.is-solid .nav-link {
+    color: var(--color-ink);
+  }
+  header.is-solid .nav-link:hover,
+  header.is-solid .nav-link--active {
+    color: var(--color-primary);
+  }
+  header.is-solid #logo-text,
+  header.is-solid #logo-sub,
+  header.is-solid #logo-mark {
+    color: var(--color-primary-dark);
+  }
+  header.is-solid .btn-cta {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  header.is-solid .btn-cta:hover {
+    background: var(--color-primary-dark);
+  }
+
+  header.is-transparent .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  header.is-transparent .nav-link:hover,
+  header.is-transparent .nav-link--active {
+    color: #fff;
+  }
+  header.is-transparent #logo-text,
+  header.is-transparent #logo-sub,
+  header.is-transparent #logo-mark {
+    color: #fff;
+  }
+  header.is-transparent .btn-cta {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+  }
+  header.is-transparent .btn-cta:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  #mobile-menu.is-open {
+    transform: translateX(0);
+  }
+
+  .hamburger-bar {
+    color: inherit;
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header')!
+  const toggle = document.getElementById('mobile-toggle')!
+  const menu = document.getElementById('mobile-menu')!
+  const isHome = window.location.pathname === '/'
+
+  function updateHeader() {
+    const scrolled = window.scrollY > 60
+    if (isHome) {
+      header.classList.toggle('is-solid', scrolled)
+      header.classList.toggle('is-transparent', !scrolled)
+    } else {
+      header.classList.add('is-solid')
+      header.classList.remove('is-transparent')
+    }
+  }
+
+  updateHeader()
+  window.addEventListener('scroll', updateHeader, { passive: true })
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('is-open')
+    toggle.setAttribute('aria-expanded', String(isOpen))
+    menu.setAttribute('aria-hidden', String(!isOpen))
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+  })
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('is-open')
+      toggle.setAttribute('aria-expanded', 'false')
+      menu.setAttribute('aria-hidden', 'true')
+      document.body.style.overflow = ''
+    })
+  })
+</script>

@@ -1,0 +1,85 @@
+---
+const cards = [
+  {
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    title: 'Segurança do Trabalho',
+    desc: 'Gestão e elaboração dos programas previstos nas NRs, atendendo às exigências do Ministério do Trabalho e do eSOCIAL.',
+    href: '/servicos#seguranca-do-trabalho',
+    color: 'from-primary to-primary-mid',
+  },
+  {
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+    title: 'Higiene Ocupacional',
+    desc: 'Proteção da integridade física e mental do trabalhador, avaliando e controlando riscos físicos, químicos e biológicos.',
+    href: '/servicos#higiene-ocupacional',
+    color: 'from-primary-mid to-primary-light',
+  },
+  {
+    icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+    title: 'Meio Ambiente',
+    desc: 'Identificação e controle de contingências ambientais com equipe multidisciplinar e tecnologias avançadas.',
+    href: '/servicos#meio-ambiente',
+    color: 'from-[#1a6b3a] to-primary-mid',
+  },
+  {
+    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+    title: 'Avaliação Periódica',
+    desc: 'Realizamos avaliações periódicas em todo o território nacional pelo sistema SIAPENET do Governo Federal.',
+    href: '/servicos#avaliacao-periodica',
+    color: 'from-primary-dark to-primary',
+  },
+]
+---
+
+<section class="bg-surface py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="mb-14 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+      <div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">
+          O que fazemos
+        </p>
+        <h2 class="font-display text-3xl text-primary-dark md:text-4xl lg:text-[2.5rem]">
+          Áreas de Atuação
+        </h2>
+      </div>
+      <a
+        href="/servicos"
+        class="flex items-center gap-2 text-sm font-semibold text-primary-light transition-colors hover:text-primary"
+      >
+        Ver todos os serviços
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      {
+        cards.map((card, i) => (
+          <a
+            href={card.href}
+            class="service-card group relative overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1"
+          >
+            <div class={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-100`}></div>
+            <div class="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="background: linear-gradient(135deg, rgba(200,169,110,0.15) 0%, transparent 60%)"></div>
+            <div class="relative z-10">
+              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-white/15">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d={card.icon} />
+                </svg>
+              </div>
+              <h3 class="font-display mb-3 text-xl text-white">{card.title}</h3>
+              <p class="text-sm leading-relaxed text-white/70">{card.desc}</p>
+              <div class="mt-5 flex items-center gap-1.5 text-xs font-semibold text-white/60 transition-all group-hover:text-accent group-hover:gap-2.5">
+                Saiba mais
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

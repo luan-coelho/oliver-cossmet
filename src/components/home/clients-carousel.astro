@@ -1,0 +1,66 @@
+---
+import clientsData from '@/data/clients.json'
+
+const clients = clientsData
+---
+
+<section class="overflow-hidden border-y border-surface-2 bg-white py-16">
+  <div class="mx-auto mb-10 max-w-7xl px-6 text-center lg:px-10">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
+      Empresas e órgãos que confiam em nós
+    </p>
+  </div>
+
+  <div class="marquee-wrapper relative">
+    <div class="marquee-track flex gap-6">
+      {
+        [...clients, ...clients].map((client, i) => (
+          <div class="marquee-item flex shrink-0 items-center gap-3 rounded-xl border border-surface-2 bg-surface px-6 py-4">
+            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-pale text-primary font-display text-xs font-bold">
+              {client.name.slice(0, 2).toUpperCase()}
+            </div>
+            <div class="text-left">
+              <div class="text-sm font-semibold text-ink">{client.name}</div>
+              <div class="text-xs text-ink-faint">{client.city} — {client.state}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-wrapper {
+    --duration: 50s;
+  }
+  .marquee-wrapper::before,
+  .marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+  .marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
+  .marquee-track {
+    animation: marquee var(--duration) linear infinite;
+    width: max-content;
+  }
+  .marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>

@@ -1,0 +1,10 @@
+[
+  { "id": "acuidade-visual", "title": "Acuidade Visual", "description": "Exame que avalia a capacidade da visão de perceber a forma e o contorno dos objetos. Fundamental para detectar déficit de visão que poderia causar riscos ao trabalhador." },
+  { "id": "avaliacao-psicologica", "title": "Avaliação Psicológica", "description": "Avaliação psicossocial com objetivo de analisar a história clínica pessoal e ocupacional do colaborador, incluindo aspectos comportamentais e perfil psicológico." },
+  { "id": "ecg", "title": "Eletrocardiograma (ECG)", "description": "Exame que analisa a variação das ondas elétricas emitidas pelas contrações do coração, detectando possíveis anormalidades nas ondas cardíacas do examinado." },
+  { "id": "eeg", "title": "Eletroencefalograma (EEG)", "description": "Exame que analisa a atividade elétrica cerebral espontânea, detectando possíveis anormalidades nas ondas cerebrais do examinado." },
+  { "id": "espirometria", "title": "Espirometria", "description": "Teste que mede a função pulmonar, avaliando os volumes e fluxos de ar que entram e saem do pulmão para diagnosticar o perfil pulmonar do colaborador." },
+  { "id": "audiometria", "title": "Exame Audiométrico", "description": "Exame que avalia a capacidade auditiva do paciente. Obrigatório para trabalhadores expostos a níveis de pressão sonora que ultrapassem os limites de tolerância." },
+  { "id": "aso", "title": "Exame Clínico (ASO)", "description": "Atestado de Saúde Ocupacional emitido após qualquer exame médico ocupacional — admissional, demissional, periódico, retorno ao trabalho ou mudança de função." },
+  { "id": "raio-x", "title": "Raio X Tórax PA", "description": "Exame radiológico mais comumente pedido pelo Médico do Trabalho para diagnosticar doenças que afetem o tórax, pulmões, coração, mediastino e pleura." }
+]

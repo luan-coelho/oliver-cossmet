@@ -1,0 +1,65 @@
+---
+import MainLayout from '@/layouts/main-layout.astro'
+import PageHero from '@/components/shared/page-hero.astro'
+import { CONTACT_INFO } from '@/consts'
+
+const whatsappMsg = encodeURIComponent('Olá! Tenho interesse em me tornar um credenciado da Oliver Cossmet.')
+const whatsappHref = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${whatsappMsg}`
+
+const beneficios = [
+  { title: 'Rede Nacional', desc: 'Faça parte de uma rede que atende em mais de 10 estados.' },
+  { title: 'Clientela Qualificada', desc: 'Acesso a clientes de órgãos públicos e empresas privadas.' },
+  { title: 'Suporte Técnico', desc: 'Apoio de nossa equipe multidisciplinar especializada.' },
+  { title: 'Visibilidade', desc: 'Sua clínica ou laboratório no portfólio da Oliver Cossmet.' },
+]
+---
+
+<MainLayout title="Credenciados" description="Torne-se um parceiro credenciado da Oliver Cossmet e expanda seu negócio.">
+  <PageHero
+    title="Credenciados"
+    subtitle="Seja parte da nossa rede de clínicas e laboratórios credenciados."
+    breadcrumb={[{ label: 'Credenciados' }]}
+  />
+
+  <section class="bg-white py-20 lg:py-28">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">Parceria</p>
+          <h2 class="font-display mb-6 text-3xl text-primary-dark md:text-4xl">
+            Amplie seu alcance com a Oliver Cossmet
+          </h2>
+          <p class="mb-5 text-base leading-relaxed text-ink-muted">
+            Trabalhamos com uma equipe de parceiros credenciados entre clínicas e laboratórios da mais alta qualidade para atender as demandas da gestão pública e privada em todo o território nacional.
+          </p>
+          <p class="text-base leading-relaxed text-ink-muted">
+            Nossas parcerias são construídas com base na confiança, qualidade técnica e compromisso com os clientes. Se você possui uma clínica ou laboratório e deseja fazer parte dessa rede, entre em contato conosco.
+          </p>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-8 inline-flex items-center gap-2.5 rounded-xl bg-primary px-7 py-4 font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-xl"
+          >
+            Quero ser credenciado
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {
+            beneficios.map((b) => (
+              <div class="rounded-2xl border border-surface-2 bg-surface p-6">
+                <div class="mb-3 h-2 w-8 rounded-full bg-primary-pale"></div>
+                <h3 class="font-display mb-2 text-base text-primary-dark">{b.title}</h3>
+                <p class="text-sm leading-relaxed text-ink-muted">{b.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
